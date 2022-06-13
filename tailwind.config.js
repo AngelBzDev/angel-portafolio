@@ -5,18 +5,21 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'sans-serif']
+      sans: ["Inter", "sans-serif"],
+      serif: ["Fira Code", "monospace"],
     },
     colors: {
       //p- significa personalizado
-      'p-blue': '#161622',
-      'p-white': '#eff0f2',
-      'p-gray': '#b8bdcc',
-      'p-blue-2': '#c5f1fe',
-      'p-purple': '#aba2f1',
-      'p-orange': '#fbc390'
+      "p-background": "#131313",
+      "p-gray": "#212121",
+      "p-white": "#eff0f2",
+      "p-purple": "#BC8CF2",
     },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        '4': 'repeat(auto-fill, minmax(203px, 1fr))'
+      }
+    },
   },
   plugins: [],
 };
