@@ -28,7 +28,11 @@ export const AboutMeSection = () => {
             </p>
           </div>
           <div className="flex items-center w-56 p-2 mx-auto rounded-lg md:w-72 -z-20 ">
-            <Image src={io} alt="Foto de Angel Baez" className="rounded-lg -z-10" />
+            <Image
+              src={io}
+              alt="Foto de Angel Baez"
+              className="rounded-lg -z-10"
+            />
           </div>
         </div>
       </div>

@@ -18,27 +18,32 @@ export const Navbar: FC = () => {
   ];
 
   let ubiPrincipal = typeof window === "undefined" ? 0 : window.scrollY;
+  let desplazamientoActual;
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
-      let desplazamientoActual =
-        typeof window === "undefined" ? 0 : window.scrollY;
-      if (ubiPrincipal >= desplazamientoActual) {
-        setScroll("top-0");
-      } else {
-        setScroll("-top-20");
-      }
-      ubiPrincipal = desplazamientoActual;
-    });
-  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", () => {
+        desplazamientoActual =
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          typeof window === "undefined" ? 0 : window.scrollY;
+        if (ubiPrincipal >= desplazamientoActual) {
+          setScroll("top-0");
+        } else {
+          setScroll("-top-20");
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        ubiPrincipal = desplazamientoActual;
+      });
+    }
+  }, [ubiPrincipal, desplazamientoActual]);
 
   const handleOpenNav = () => setOpen(!open);
 
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
 
   const handleCloseMenu = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <nav
@@ -47,7 +52,7 @@ export const Navbar: FC = () => {
       <Image src={logo} alt="logo" />
       <button
         onClick={handleOpenNav}
-        className="block md:hidden transition-all"
+        className="block transition-all md:hidden"
       >
         {!open ? <IoMenu size={"2.5rem"} /> : <IoClose size={"2.5rem"} />}
       </button>
@@ -58,7 +63,7 @@ export const Navbar: FC = () => {
             onClick={handleCloseMenu}
           >
             {menuItems.map((item, i) => (
-              <NavLink item={item} i={i} key={i}/>
+              <NavLink item={item} i={i} key={i} />
             ))}
           </div>
         )
